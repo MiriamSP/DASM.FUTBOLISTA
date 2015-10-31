@@ -24,8 +24,8 @@ public class ActividadMostrarFutbolista extends AppCompatActivity {
     TextView tvId, tvNombre, tvDorsal, tvEquipo;
     ImageView ivLesionado, ivImagenFutbolista;
     Context contexto;
-    final static String URL_OBJETIVO = "https://avatars1.githubusercontent.com/u/5365410";
-
+    final static String URL_OBJETIVO = "http://dibujoscolorear.es/wp-content/uploads/dibujos_para_colorear_gratis-18-450x451.gif";
+    Futbolista futbolista;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -39,7 +39,7 @@ public class ActividadMostrarFutbolista extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         // Recuperar piloto
-        Futbolista futbolista = getIntent().getParcelableExtra("MOSTRAR_Futbolista");
+       futbolista = getIntent().getParcelableExtra("MOSTRAR_Futbolista");
         Log.i("MOSTRAR", futbolista.toString());
 
         // Identificar vistas
@@ -87,7 +87,9 @@ public class ActividadMostrarFutbolista extends AppCompatActivity {
 
         setResult(RESULT_OK);
 
-
+        TareaCargarImagen tarea = new TareaCargarImagen();
+        ivImagenFutbolista.setTag(URL_OBJETIVO);
+        tarea.execute(ivImagenFutbolista);
 
 
     }
@@ -119,7 +121,10 @@ public class ActividadMostrarFutbolista extends AppCompatActivity {
             this.imageView = imageViews[0];
             Bitmap bmp = null;
             try {
-                URL ulrn = new URL(URL_OBJETIVO);   // imageView.getTag()
+                //String url = imageView.getTag().toString(); // imageView.getTag()
+                String url = futbolista.get_url_imagen();
+                //URL ulrn = new URL(url);
+                URL ulrn = new URL(URL_OBJETIVO);
                 HttpURLConnection con = (HttpURLConnection) ulrn.openConnection();
                 InputStream is = con.getInputStream();
                 bmp = BitmapFactory.decodeStream(is);

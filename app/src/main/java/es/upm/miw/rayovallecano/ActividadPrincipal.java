@@ -57,7 +57,7 @@ public class ActividadPrincipal extends AppCompatActivity {
         Log.i("Num", String.format("%d", repositorio.add(
                 new Futbolista(num, "Jugador " + String.format("%d", num), num, num % 2 == 0, "Primera", null))));
 
-        Futbolista newFutbolista = new Futbolista(++num,"Jugador " + String.format("%d", num), num, num % 2 == 0, "Primera", null);
+        Futbolista newFutbolista = new Futbolista(++num,"Jugador " + String.format("%d", num), num, num % 2 == 0, "Primera", "https://www.google.es/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0CAcQjRxqFQoTCLqY_ODM7MgCFQHtFAodWkIO5A&url=http%3A%2F%2Fsp.depositphotos.com%2F8532494%2Fstock-illustration-cartoon-footballer-or-soccer-player.html&bvm=bv.106379543,d.d24&psig=AFQjCNHg75RhM-2Py1VPEifycBpzTkG9mw&ust=1446377101470527");
         repositorio.add(newFutbolista);
         futbolistas = repositorio.getAll();
         ArrayAdapter<Futbolista> adaptador = new FutbolistaAdapter(this, futbolistas);
