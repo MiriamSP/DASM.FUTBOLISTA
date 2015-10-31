@@ -13,6 +13,8 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -86,11 +88,13 @@ public class ActividadMostrarFutbolista extends AppCompatActivity {
         }
 
         setResult(RESULT_OK);
-
+/*
         TareaCargarImagen tarea = new TareaCargarImagen();
         ivImagenFutbolista.setTag(URL_OBJETIVO);
         tarea.execute(ivImagenFutbolista);
-
+*/
+        // para utilizar Picasso, incluir la libreria en el fichero gradle
+        Picasso.with(contexto).load(futbolista.get_url_imagen()).into(ivImagenFutbolista);
 
     }
 
